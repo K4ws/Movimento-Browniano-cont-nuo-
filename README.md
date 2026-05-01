@@ -1,3 +1,30 @@
 # Movimento-Browniano-cont-nuo-
 
-Merton Jump Diffusion: Simulação de Carteira e Análise de RiscoEste repositório contém uma implementação em Python do modelo de Merton Jump Diffusion (MJD) para simular o comportamento de uma carteira de ativos da B3. Diferente do modelo tradicional de Black-Scholes, o modelo de Merton contabiliza a presença de "saltos" ou eventos extremos (Cisnes Negros), proporcionando uma estimativa de risco mais robusta e realista.🚀 FuncionalidadesColeta Automática: Integração com yfinance para baixar dados históricos de ativos reais (PETR4, VALE3, ITUB4, WEGE3, MBRF3).Calibração Estatística: Algoritmo para separar a volatilidade contínua (Movimento Browniano) dos saltos discretos utilizando a regra de 3-Sigma.Simulação de Monte Carlo: Geração de 10.000 trajetórias futuras considerando a correlação entre os ativos (Decomposição de Cholesky).Análise de Risco Quantitativo: Cálculo de métricas críticas de risco:VaR (Value at Risk) 95%: A perda máxima esperada para um nível de confiança.CVaR (Conditional Value at Risk) 95%: A perda média esperada caso o VaR seja rompido (Expected Shortfall).🧠 O Modelo MatemáticoO modelo assume que o preço do ativo segue um processo de difusão de saltos, onde a evolução do preço é composta por duas partes:Componente Difusivo: Um movimento browniano contínuo que representa a oscilação normal do mercado.Componente de Salto: Um processo de Poisson que representa choques repentinos de preços.$$dS_t = \mu S_t dt + \sigma S_t dW_t + S_t d(\sum_{i=1}^{N_t} (J_i - 1))$$🛠️ Tecnologias UtilizadasPython 3.xPandas & NumPy: Manipulação de dados e cálculos matriciais.Yfinance: Extração de dados financeiros em tempo real.Matplotlib & Seaborn: Visualização de dados e plotagem de cenários.SciPy: Cálculos estatísticos e álgebra linear.
+📈 Merton Jump Diffusion: Simulação de Carteira e Análise de Risco
+Este repositório contém uma implementação robusta em Python do modelo de Merton Jump Diffusion (MJD). O objetivo é simular o comportamento de uma carteira de ativos da B3 (Bolsa Brasileira), indo além do modelo tradicional de Black-Scholes ao incorporar "saltos" (eventos extremos ou Cisnes Negros).
+
+🚀 Funcionalidades
+Coleta Automática: Integração direta com a API yfinance para extração de dados históricos.
+
+Calibração Estatística: Filtro baseado na regra de 3-Sigma para separar a volatilidade do Movimento Browniano dos saltos discretos.
+
+Simulação de Monte Carlo: Geração de milhares de trajetórias correlacionadas via Decomposição de Cholesky.
+
+Métricas de Risco Avançadas:
+
+VaR (Value at Risk) 95%: Perda máxima esperada dentro de um nível de confiança.
+
+CVaR (Conditional VaR) 95%: Perda média esperada em cenários de estresse (além do VaR).
+
+
+🧠 O Modelo MatemáticoO diferencial deste modelo é a composição do preço em duas partes principais:Componente Difusivo: Oscilação diária normal (ruído de mercado).Componente de Salto: Processo de Poisson que captura choques repentinos.
+
+A dinâmica do preço é regida pela equação diferencial estocástica:$$dS_t = \mu S_t dt + \sigma S_t dW_t + S_t d\left(\sum_{i=1}^{N_t} (J_i - 1)\right)$$Onde:$\mu$ é o drift (retorno esperado).$\sigma$ é a volatilidade do componente contínuo.$dW_t$ é o processo de Wiener (Movimento Browniano).$N_t$ é um processo de Poisson com intensidade $\lambda$.$J_i$ é o tamanho do salto aleatório.
+
+
+🛠️ Tecnologias UtilizadasBibliotecaUtilidadePython 3.x 
+Linguagem base Pandas 
+NumPy Processamento de vetores e matrizes 
+Yfinance Obtenção de dados do mercado financeiro 
+Matplotlib 
+Seaborn Visualização de cenários e gráficos de risco
